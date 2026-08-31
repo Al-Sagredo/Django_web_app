@@ -12,20 +12,25 @@
 
 <body class='bg-light'>
     
-<nav class='navbar'>
-    {% if user.is_authenticated %} <!--usuario autenticado-->
-        <span>Hola {{user.username}}</span>
-        <form method='POST' action="{% url 'logout' %}">
-            {% csrf_token %}
-            <button type='submit'>Cerrar sesión</button>
-        </form>
+<nav class='navbar navbar-expand-lg navbar-dark bg-dark px-3 mb-4'>
+    <div class='container-fluid'>
+        <a class='navbar-brand' href='#'>Mi app</a>
         
-    {% else %} <!--usuario no autenticado (anonimo)-->
-        
-        {% comment %} <a href= "{% url 'login' %}">Ingresar </a>
-        <a href ="{% url 'registro' %}">Registrarme </a> {% endcomment %}
-    {% endif %}
+        <div class='d-flex align-items-center gap-2'>
 
+        {% if user.is_authenticated %} <!--usuario autenticado-->
+            <span class='text-white me-2'><strong>{{user.username}}</strong></span>
+            <form method='POST' action="#" class='d-inline'>
+                {% csrf_token %}
+                <button type='submit' class='btn btn-outline-danger btn-sm'>Cerrar sesión</button>
+            </form>
+            
+        {% else %} <!--usuario no autenticado (anonimo)-->
+            <a href= "#" class='btn btn-outline-light btn-sm'>Ingresar </a>
+            <a href ="{% url 'registro' %}" class='btn btn-primary btn-sm'>Registrarme </a> 
+        {% endif %}
+        </div>
+    </div>
 </nav>
 
 <main class='container my-4'>
