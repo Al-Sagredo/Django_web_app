@@ -6,19 +6,19 @@ from .models import Proyecto, Tarea
 
 @admin.register(Proyecto)
 class ProyectoAdmin(admin.ModelAdmin):
-    list_display = ('nombre',)
+    list_display = ('nombre', 'usuario', 'fecha_creacion')
 
-    list_filter= ('nombre',)
+    list_filter= ('nombre', 'usuario')
     
-    search_fields = ('nombre',)
+    search_fields = ('nombre', 'usuario__username')
 
 @admin.register(Tarea)
 class TareaAdmin(admin.ModelAdmin):
-    list_display = ('nombre',)
+    list_display = ('nombre', 'proyecto', 'usuario', 'fecha_creacion', 'completada')
 
-    list_filter= ('nombre',)
+    list_filter= ('proyecto', 'usuario', 'fecha_creacion', 'completada')
         
-    search_fields = ('nombre',)
+    search_fields = ('nombre', 'proyecto__nombre', 'usuario__username')
 
 
 
