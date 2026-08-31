@@ -22,4 +22,4 @@ def registro_usuario(request):
 
 # CBV vista de home con mixin
 class HomeView(LoginRequiredMixin, TemplateView):# Mixin: Solo los usuarios autenticados con una sesión válida pueden ver la página.
-    template_name= 'home.html'
+    template_name= 'home.html' 

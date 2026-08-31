@@ -20,13 +20,13 @@
 
         {% if user.is_authenticated %} <!--usuario autenticado-->
             <span class='text-white me-2'><strong>{{user.username}}</strong></span>
-            <form method='POST' action="#" class='d-inline'>
+            <form method='POST' action={% url 'logout' %} class='d-inline'>
                 {% csrf_token %}
                 <button type='submit' class='btn btn-outline-danger btn-sm'>Cerrar sesión</button>
             </form>
             
         {% else %} <!--usuario no autenticado (anonimo)-->
-            <a href= "#" class='btn btn-outline-light btn-sm'>Ingresar </a>
+            <a href= {% url 'login' %} class='btn btn-outline-light btn-sm'>Ingresar </a>
             <a href ="{% url 'registro' %}" class='btn btn-primary btn-sm'>Registrarme </a> 
         {% endif %}
         </div>
