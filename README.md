@@ -12,35 +12,35 @@ Aplicación web desarrollada con Django y Bootstrap para la gestión de proyecto
 
 ---
 
-## 🛠️ Instalación y Configuración
+## Instalación y Configuración
 
 Sigue estos pasos en tu terminal para ejecutar el proyecto localmente:
 
 1. Clonar el repositorio y entrar al directorio
 
-git clone [https://github.com/Al-Sagredo/Django_web_app](https://github.com/Al-Sagredo/Django_web_app)
-cd proyecto_django
+git clone [https://github.com/Al-Sagredo/Django_web_app](https://github.com/Al-Sagredo/Django_web_app)  
+cd proyecto_django  
 
- 2. Crear y activar el entorno virtual
- python -m venv venv
-venv\Scripts\activate
+ 2. Crear y activar el entorno virtual  
+ python -m venv venv  
+venv\Scripts\activate  
 
-3. Instalar dependencias
-pip install django
+3. Instalar dependencias  
+pip install django  
 
-4. Aplicar migraciones
-python manage.py makemigrations
-python manage.py migrate
+4. Aplicar migraciones  
+python manage.py makemigrations  
+python manage.py migrate  
 
-5. Crear un superusuario (Opcional)
-python manage.py createsuperuser    
+5. Crear un superusuario (Opcional)  
+python manage.py createsuperuser      
 
-6. Iniciar el servidor de desarrollo
-python manage.py runserver
+6. Iniciar el servidor de desarrollo  
+python manage.py runserver  
 
-Listo! Ingresa a http://127.0.0.1:8000/ en tu navegador.
+Listo! Ingresa a http://127.0.0.1:8000/ en tu navegador.  
 
-Estructura del Proyecto
+Estructura del Proyecto  
 ├── core/                       # Aplicación principal
 │   ├── migrations/             # Migraciones de base de datos
 │   ├── templates/core/         # Plantillas de la app (proyecto_list, detalle, forms)
