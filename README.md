@@ -40,7 +40,9 @@ python manage.py runserver
 
 Listo! Ingresa a http://127.0.0.1:8000/ en tu navegador.  
 
-Estructura del Proyecto  
+## 📁 Estructura del Proyecto
+
+```text
 ├── core/                       # Aplicación principal
 │   ├── migrations/             # Migraciones de base de datos
 │   ├── templates/core/         # Plantillas de la app (proyecto_list, detalle, forms)
