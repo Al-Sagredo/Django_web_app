@@ -1,10 +1,39 @@
 {% extends 'base.html' %}
 
-<title>{% block title %} Home {% endblock %}</title>
+{% block title %}Inicio{% endblock %}
 
-{% block content%}
+{% block content %}
+<div class="p-5 mb-4 bg-light rounded-3 shadow-sm text-center">
+    <h1 class="display-5 fw-bold">Panel Principal</h1>
+    <p class="fs-4 text-muted">Bienvenido, {{ user.username }}</p>
+    <p class="text-secondary">Gestiona tus proyectos y tareas desde aquí.</p>
+</div>
 
-    <h1> Home </h1>
-    <h2> Bienvenido {{user.username}}
+<div class="row g-4 justify-content-center">
+    <!-- Opción: Ver lista de proyectos -->
+    <div class="col-md-5">
+        <div class="card h-100 shadow-sm border-0 text-center p-4">
+            <div class="card-body">
+                <h3 class="card-title mb-3">Mis Proyectos</h3>
+                <p class="card-text text-muted mb-4">Consulta la lista completa de tus proyectos y revisa el progreso de sus tareas.</p>
+                <a href="{% url 'lista_proyectos' %}" class="btn btn-primary btn-lg w-100">
+                    Ver Proyectos
+                </a>
+            </div>
+        </div>
+    </div>
 
+    <!-- Opción: Crear nuevo proyecto -->
+    <div class="col-md-5">
+        <div class="card h-100 shadow-sm border-0 text-center p-4">
+            <div class="card-body">
+                <h3 class="card-title mb-3">Nuevo Proyecto</h3>
+                <p class="card-text text-muted mb-4">Crea un nuevo espacio de trabajo para organizar tareas y actividades.</p>
+                <a href="{% url 'crear_proyecto' %}" class="btn btn-success btn-lg w-100">
+                    + Crear Proyecto
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

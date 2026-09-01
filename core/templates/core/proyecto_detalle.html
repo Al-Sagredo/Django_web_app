@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalles de {{ proyecto.nombre }}{% endblock %}
+
+{% block content %}
+<!-- Encabezado con Botón de Regreso -->
+<div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+    <div>
+        <h1 class="mb-0">{{ proyecto.nombre }}</h1>
+        <small class="text-muted">Gestión de tareas del proyecto</small>
+    </div>
+    <div class="d-flex gap-2">
+        <a href="{% url 'editar_proyecto' proyecto.pk %}" class="btn btn-outline-primary btn-sm">
+            Editar
+        </a>
+        <a href="{% url 'eliminar_proyecto' proyecto.pk %}" class="btn btn-outline-danger btn-sm">
+            Eliminar
+        </a>
+        <a href="{% url 'lista_proyectos' %}" class="btn btn-outline-secondary btn-sm">
+            &larr; Volver
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Columna Izquierda: Lista de Tareas -->
+    <div class="col-md-7 mb-4">
+        <h4 class="text-muted mb-3">Tareas</h4>
+
+        <ul class="list-group">
+            {% for tarea in proyecto.tareas.all %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="{% if tarea.completada %}text-decoration-line-through text-muted{% endif %}">
+                            {{ tarea.nombre }}
+                        </span>
+                        {% if tarea.completada %}
+                            <span class="badge bg-success">Completada</span>
+                        {% else %}
+                            <span class="badge bg-warning text-dark">Pendiente</span>
+                        {% endif %}
+                    </div>
+
+                    <div class="d-flex gap-2 align-items-center">
+                        <!-- Botón Alternar Completada / Desmarcar -->
+                        <form method="POST" action="{% url 'alternar_tarea' tarea.pk %}" class="d-inline">
+                            {% csrf_token %}
+                            {% if tarea.completada %}
+                                <button type="submit" class="btn btn-outline-warning btn-sm">Desmarcar</button>
+                            {% else %}
+                                <button type="submit" class="btn btn-outline-success btn-sm">Completar</button>
+                            {% endif %}
+                        </form>
+
+                        <!-- Botón Eliminar Tarea -->
+                        <form method="POST" action="{% url 'eliminar_tarea' tarea.pk %}" class="d-inline" onsubmit="return confirm('¿Seguro que deseas eliminar esta tarea?');">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline-danger btn-sm">Eliminar</button>
+                        </form>
+                    </div>
+                </li>
+            {% empty %}
+                <li class="list-group-item text-muted">
+                    No hay tareas registradas en este proyecto todavía.
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Columna Derecha: Formulario para Agregar Tarea -->
+    <div class="col-md-5">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title mb-3">Agregar Tarea</h5>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary w-100">Guardar Tarea</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

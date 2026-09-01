@@ -26,10 +26,10 @@ class ProyectoForm(forms.ModelForm):
 class TareaForm(forms.ModelForm):
     class Meta:
         model = Tarea
-        fields = ['nombre', 'completada']
+        fields = ['nombre',]
         widgets={
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
-            'completada': forms.CheckboxInput(attrs={'class': 'form-check-input'})
+            
         }
 
     def clean_nombre(self):
